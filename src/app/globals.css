@@ -31,3 +31,12 @@ body {
     text-wrap: balance;
   }
 }
+
+.search-input {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.2px;
+  letter-spacing: -0.6000000238418579px;
+  text-align: left;
+}
