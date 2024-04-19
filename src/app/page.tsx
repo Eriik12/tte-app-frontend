@@ -1,6 +1,6 @@
 'use client'
 import '../app/globals.css';
-import React from 'react';
+import React, { useState } from 'react';
 import TopBar from './components/LandingPage/TopBar';
 import Carousel from './components/LandingPage/Carousel';
 import Categories from './components/LandingPage/Categories';
@@ -26,9 +26,19 @@ export default function Home() {
     },
   ];
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-between " style={{ backgroundColor: '#EFF2F6' }}>
-      <TopBar/>
+      <TopBar isLoggedIn={isLoggedIn} />
       <Carousel slides={slides} />
       <Categories/>
       <OurArrivals/>
