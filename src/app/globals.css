@@ -31,3 +31,56 @@ body {
     text-wrap: balance;
   }
 }
+
+.search-input {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.2px;
+  letter-spacing: -0.6000000238418579px;
+  text-align: left;
+}
+
+/* Ajustes generales para dispositivos móviles */
+@media screen and (max-width: 600px) {
+  .top-bar {
+    padding: 1rem;
+  }
+
+  .top-bar h1 {
+    font-size: 1.5rem;
+  }
+
+  .top-bar p {
+    font-size: 0.875rem;
+  }
+
+  .carousel-container {
+    height: 300px; /* Ajusta según sea necesario para dispositivos móviles */
+  }
+
+  .category {
+    max-width: 100%;
+  }
+
+  .category img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .our-arrivals,
+  .our-products {
+    padding: 1rem;
+  }
+
+  .our-arrivals h2,
+  .our-products h2 {
+    font-size: 1.25rem;
+  }
+
+  .our-arrivals p,
+  .our-products p {
+    font-size: 0.875rem;
+  }
+}
