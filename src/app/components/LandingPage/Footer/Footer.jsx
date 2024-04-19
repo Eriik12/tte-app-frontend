@@ -5,8 +5,8 @@ import { Icons } from "./Menus";
 
 const FooterPage = () => {
   return (
-    <footer className=" text-white py-8 border-t border-gray-400">
-      <div className="md:flex md:justify-between md:items-center md:px-12 px-4">
+    <footer className=" text-white py-8 border-t border-gray-400 bg-gray-100">
+      <div className="md:flex md:justify-between md:items-center md:px-12 px-4 ">
         <div className=" md:w-2/5">
           <h1 className="lg:text-4x2 text-3xl font-bold text-black mb-6">
             Sign up for our newsletter
@@ -29,11 +29,9 @@ const FooterPage = () => {
           <ItemsContainer />
         </div>
       </div>
-      <div className=" absolute md:flex md:justify-center md:px-12 px-4 mt-8">
-        <div className="text-white bg-black p-2 rounded">
+        <div className="text-white bg-black p-4 text-center w-full ">
           Copyrights site.com. All Rights Reserved
         </div>
-      </div>
     </footer>
   );
 };
