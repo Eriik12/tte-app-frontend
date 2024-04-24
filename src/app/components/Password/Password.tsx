@@ -1,6 +1,5 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { useRouter } from 'next/router';
 
 const Password = () => {
     
@@ -40,9 +39,6 @@ const Password = () => {
     }
   };
 
-  const handleForgotPassword = () => {
-    router.push('/ForgotPassword');
-  };
 
   return (
     <section className="bg-gray-100 w-full">
