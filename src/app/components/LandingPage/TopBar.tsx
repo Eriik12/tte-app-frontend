@@ -1,7 +1,12 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { NavMobile } from './NavMobile';
-const TopBar: React.FC = () => {
+
+interface TopBarProps {
+  isLoggedIn: boolean;
+}
+
+const TopBar: React.FC<TopBarProps> = ({ isLoggedIn }) => {
   return (
     <div className="bg-black text-white absolute top-0 left-0 w-full">
        {/* OFFERS*/}
@@ -20,11 +25,14 @@ const TopBar: React.FC = () => {
           <FaSearch className="absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
           <input type="text" placeholder="Search" className="pl-10 pr-4 rounded-full border border-gray-300 bg-transparent focus:outline-none focus:border-black w-36 sm:w-48 md:w-60 lg:w-72" />
         </div>
-        <button className="bg-white text-black px-4 py-2 hidden lg:block">Login</button>
+        {isLoggedIn ? (
+          <a href="/logout" className="bg-white text-black px-4 py-2 hidden lg:block">Logout</a>
+        ) : (
+          <a href="/login" className="bg-white text-black px-4 py-2 hidden lg:block">Login</a>
+        )}
       </div>
       <NavMobile/>
     </div>
-    
   );  
 }
 
