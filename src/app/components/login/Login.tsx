@@ -1,7 +1,6 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-import { useRouter } from 'next/router';
 
 interface UserData {
   id: string;
@@ -10,7 +9,6 @@ interface UserData {
 }
 
 const Login = () => {
-  // const router = useRouter();
   const [rememberMe, setRememberMe] = useState(false);
   
   const handleRememberMeChange = () => {
@@ -43,7 +41,6 @@ const Login = () => {
       if (response.ok) {
         setUserData(data);
         setMensaje('Register succesfull!');
-        // router.push('/');
       } else {
         setMensaje('Incorrect data. Please try again.');
       }
