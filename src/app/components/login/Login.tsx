@@ -2,6 +2,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie'; 
 
 interface UserData {
   id: string;
@@ -44,9 +45,10 @@ const Login = () => {
       if (response.ok) {
         setTimeout(() => {
           router.push('/');
-        }, 2000);
+        }, 500);
         setUserData(data);
-        setMensaje('Register succesfull!');
+        setMensaje('Register succesfull');
+        Cookies.set('userData', JSON.stringify(data));
       } else {
         setMensaje('Incorrect data. Please try again.');
       }
