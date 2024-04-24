@@ -85,7 +85,7 @@ const RegisterForm = () => {
         resetForm();
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, isValid }) => (
 
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
     <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
@@ -105,7 +105,7 @@ const RegisterForm = () => {
              placeholder="Enter your user email"
              required
            />
-           <ErrorMessage name="email" component="div" className="error text-black" />
+           <ErrorMessage name="email" component="div" className="error text-red-500 text-sm"  />
          </div>
 
          <div>
@@ -118,7 +118,7 @@ const RegisterForm = () => {
              placeholder="Your username"
              required
            />
-           <ErrorMessage name="username" component="div" className="error text-black" />
+           <ErrorMessage name="username" component="div" className="error text-red-500 text-sm" />
          </div>
 
          <div>
@@ -140,7 +140,7 @@ const RegisterForm = () => {
                {showPassword ? <HiEyeOff /> : <HiEye />}
              </button>
            </div>
-           <ErrorMessage name="password" component="div" className="error text-black" />
+           <ErrorMessage name="password" component="div" className="error text-red-500 text-sm" />
          </div>
 
          <div>
@@ -162,7 +162,7 @@ const RegisterForm = () => {
                {showPassword ? <HiEyeOff /> : <HiEye />}
              </button>
            </div>
-           <ErrorMessage name="repeatPassword" component="div" className="error text-black" />
+           <ErrorMessage name="repeatPassword" component="div" className="error text-red-500 text-sm" />
          </div>
 
          <div>
@@ -199,9 +199,16 @@ const RegisterForm = () => {
            />
            <ErrorMessage name="response" component="div" className="error" />
          </div>
-
-         <button type="submit" className="bg-black w-full text-withe bg-primary-10900 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Register</button>
-         {mensaje && <p className="text-black">{mensaje}</p>}
+         <button
+            type="submit"
+            className={`w-full text-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center ${
+              isValid ? 'bg-black hover:bg-gray-900 focus:bg-gray-900' : 'bg-gray-300 cursor-not-allowed'
+            }`}
+            disabled={!isValid}
+          >
+            Register
+          </button>
+        {mensaje && <p className="text-black">{mensaje}</p>}
        </Form>
           </div>
         </div>
