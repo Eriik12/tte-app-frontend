@@ -47,7 +47,7 @@ const Login = () => {
           router.push('/');
         }, 500);
         setUserData(data);
-        setMensaje('Register succesfull');
+        setMensaje('Login succesfull');
         Cookies.set('userData', JSON.stringify(data));
       } else {
         setMensaje('Incorrect data. Please try again.');
