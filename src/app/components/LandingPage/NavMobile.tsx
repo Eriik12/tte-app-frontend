@@ -12,11 +12,11 @@ export const NavMobile = () => {
   return (
     <div className="bg-white">
       <div className="lg:hidden flex justify-between items-center">
-        <div className="justify-left font-bold text-black z-10">Tech Trend Emporium</div> {/* Aumentamos el z-index */}
+        <div className="justify-left font-bold text-black z-10">Tech Trend Emporium</div>
         <Hamburger toggled={isOpen} size={20} toggle={setOpen} rounded color="#000" />
       </div>
       {isOpen && (
-        <div className="fixed left-0 right-0 top-[7rem] bg-neutral-950 border-b border-b-white/20 z-20"> {/* Aumentamos el z-index */}
+        <div className="fixed left-0 right-0 top-[7rem] bg-neutral-950 border-b border-b-white/20 z-20">
           <div className="flex flex-col justify-center items-center h-full">
             <div className="relative py-4">
               <FaSearch className="absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />

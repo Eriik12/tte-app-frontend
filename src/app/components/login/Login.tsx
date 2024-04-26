@@ -1,6 +1,8 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
+import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie'; 
 
 interface UserData {
   id: string;
@@ -26,6 +28,8 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const router = useRouter();
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -39,8 +43,12 @@ const Login = () => {
       });
       const data = await response.json();
       if (response.ok) {
+        setTimeout(() => {
+          router.push('/');
+        }, 500);
         setUserData(data);
-        setMensaje('Register succesfull!');
+        setMensaje('Login succesfull');
+        Cookies.set('userData', JSON.stringify(data));
       } else {
         setMensaje('Incorrect data. Please try again.');
       }
@@ -119,14 +127,6 @@ const Login = () => {
 
             </form>
             {mensaje && <p className="text-black">{mensaje}</p>}
-            {userData && (
-              <div className='text-black'>
-                <h3>Data:</h3>
-                <p>ID: {userData.id}</p>
-                <p>Email: {userData.email}</p>
-                <p>Nombre de usuario: {userData.username}</p>
-              </div>
-            )}
           </div>
         </div>
       </div>
