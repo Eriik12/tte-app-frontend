@@ -5,7 +5,6 @@ import { NavMobile } from './NavMobile';
 import { destroyCookie, parseCookies } from 'nookies';
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from 'next/navigation';
-import { log } from 'console';
 
 
 const TopBar: React.FC = () => {
@@ -61,7 +60,7 @@ const TopBar: React.FC = () => {
   };
 
   const redirectToEmployeeMenu = () => {
-    router.push('/employee-menu');
+    router.push('/EmployeePortal');
   };
 
   return (
@@ -71,7 +70,7 @@ const TopBar: React.FC = () => {
         <div className="text-center">FREE SHIPPING ON ALL HERMAN MILLER! FEB. 25–28</div>
         <div className="text-right">Support</div>
       </div>
-      <div className="bg-white text-black flex justify-between items-center px-4 hidden lg:block">
+      <div className="bg-gray-100 text-black flex justify-between items-center px-4 py-2 ">
         <div className=" hidden lg:block font-bold">Tech Trend Emporium</div>
         <button className="hidden lg:block">Shop List</button>
         <button className="hidden lg:block">Wishlist</button>
@@ -84,11 +83,11 @@ const TopBar: React.FC = () => {
               <>
                 <button onClick={handleLogout} className="px-3 py-2 hidden lg:block">Logout</button>
                 {userRole === 'EMPLOYEE' && (
-                  <button onClick={redirectToEmployeeMenu} className="bg-black text-white px-2 py-2 hidden lg:block">Employee Portal</button>
+                  <button onClick={redirectToEmployeeMenu} className="bg-black text-white px-3 hidden lg:block ">Employee Portal</button>
                 )}
               </>
             ) : (
-              <a href="/login" className="px-3 py-2">Login</a>
+              <a href="/login" className="px-3 py-2  hidden lg:block">Login</a>
             )}
       </div>
       <NavMobile />
