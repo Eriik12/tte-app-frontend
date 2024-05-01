@@ -78,8 +78,12 @@ const RegisterForm = () => {
               router.push('/login');
             }, 2000);
           } else {
-            const errorMessage = await response.text();
-            throw new Error(errorMessage);
+            const errorMessage = await response.json();
+            if (response.status === 400) {
+              setMensaje('Error data, please verify your information');
+            } else {
+              throw new Error(errorMessage.error.message);
+            }
           }
         } catch (error) {
           console.error('Error to send request:', error);

@@ -80,12 +80,13 @@ const Login = () => {
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
-                <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="email@email.com" required />
+                <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your user email" required />
                 </div>
               <div>
                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">Password</label>
                 <div className="relative">
                   <input
+                    placeholder="Enter your password" 
                     type={showPassword ? "text" : "password"}
                     name="password"
                     id="password"

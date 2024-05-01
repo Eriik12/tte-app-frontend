@@ -10,7 +10,7 @@ export const NavMobile = () => {
   useClickAway(ref, () => setOpen(false));
 
   return (
-    <div className="bg-white">
+    <div className="bg-white ">
       <div className="lg:hidden flex justify-between items-center">
         <div className="justify-left font-bold text-black z-10">Tech Trend Emporium</div>
         <Hamburger toggled={isOpen} size={20} toggle={setOpen} rounded color="#000" />

@@ -3,10 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { NavMobile } from './NavMobile';
 import { destroyCookie, parseCookies } from 'nookies';
+import { jwtDecode } from "jwt-decode";
+import { useRouter } from 'next/navigation';
+import { log } from 'console';
+
 
 const TopBar: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState<string | null>(null);
+  const [userRole, setUserRole] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const cookies = parseCookies();
@@ -15,9 +21,11 @@ const TopBar: React.FC = () => {
       setIsLoggedIn(true);
       const userData = JSON.parse(decodeURIComponent(userDataCookie));
       setUserName(userData.username);
-    } else {
-      setIsLoggedIn(false);
-    }
+      const tokenPayload: { roles?: string[] } = jwtDecode(userData.token);
+      const roles = tokenPayload.roles && tokenPayload.roles.length > 0 ? tokenPayload.roles[0] : null;
+      setUserRole(roles);
+
+  }
   }, []);
 
   const handleLogout = async () => {
@@ -52,6 +60,10 @@ const TopBar: React.FC = () => {
     }
   };
 
+  const redirectToEmployeeMenu = () => {
+    router.push('/employee-menu');
+  };
+
   return (
     <div className="bg-black text-white absolute top-0 left-0 w-full">
       <div className="flex justify-between items-center px-4">
@@ -59,8 +71,8 @@ const TopBar: React.FC = () => {
         <div className="text-center">FREE SHIPPING ON ALL HERMAN MILLER! FEB. 25–28</div>
         <div className="text-right">Support</div>
       </div>
-      <div className="bg-white text-black flex justify-between items-center px-4 py-2">
-      <div className=" hidden lg:block font-bold">Tech Trend Emporium</div>
+      <div className="bg-white text-black flex justify-between items-center px-4 hidden lg:block">
+        <div className=" hidden lg:block font-bold">Tech Trend Emporium</div>
         <button className="hidden lg:block">Shop List</button>
         <button className="hidden lg:block">Wishlist</button>
         <div className="relative hidden lg:block">
@@ -69,10 +81,15 @@ const TopBar: React.FC = () => {
         </div>
         <div className="hidden lg:block font-bold">{userName}</div>
         {isLoggedIn ? (
-          <button onClick={handleLogout} className="bg-white text-black px-4 py-2 hidden lg:block">Logout</button>
-        ) : (
-          <a href="/login" className="bg-white text-black px-4 py-2 hidden lg:block">Login</a>
-        )}
+              <>
+                <button onClick={handleLogout} className="px-3 py-2 hidden lg:block">Logout</button>
+                {userRole === 'EMPLOYEE' && (
+                  <button onClick={redirectToEmployeeMenu} className="bg-black text-white px-2 py-2 hidden lg:block">Employee Portal</button>
+                )}
+              </>
+            ) : (
+              <a href="/login" className="px-3 py-2">Login</a>
+            )}
       </div>
       <NavMobile />
     </div>
